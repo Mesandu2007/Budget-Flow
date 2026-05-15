@@ -59,37 +59,45 @@ Frontend/
 │   ├── App.jsx
 │   ├── main.jsx
 ⚙️ Installation & Setup
+
 1️⃣ Clone repository
 git clone https://github.com/your-username/budget-flow.git
 cd budget-flow
+
 2️⃣ Backend setup
 cd Backend
 npm install
+
 3️⃣ Frontend setup
 cd Frontend
 npm install
 npm run dev
+
 🔗 API Routes
 🔐 Auth
 POST   /api/auth/register
 POST   /api/auth/login
 GET    /api/auth/profile
+
 💰 Transactions
 GET    /api/transactions
 POST   /api/transactions
 PUT    /api/transactions/:id
 DELETE /api/transactions/:id
+
 📊 Budgets
 GET    /api/budgets
 POST   /api/budgets
 PUT    /api/budgets/:id
 DELETE /api/budgets/:id
 GET    /api/budgets/check?month=YYYY-MM
+
 📈 Analytics
 GET /api/analytics/summary
 GET /api/analytics/category-stats
 GET /api/analytics/monthly-expenses
 GET /api/analytics/income-vs-expense
+
 📊 Future Improvements
 🤖 AI-based expense insights
 📄 Export reports (PDF / Excel)
