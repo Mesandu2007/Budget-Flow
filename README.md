@@ -1,38 +1,25 @@
-💰 Budget Flow — MERN Finance Tracker
 
-A full-stack Finance Tracking Web Application built using the MERN stack. It helps users manage income, expenses, budgets, and view financial analytics in a simple dashboard.
+# 📊 Budget Flow – MERN Finance Tracker
 
-🚀 Features
-🔐 User authentication (JWT login/register)
-💸 Add / update / delete transactions
-📊 Income vs Expense tracking
-🥧 Category-based expense analysis
-💰 Monthly budget management
-⚠ Budget warning & exceeded alerts
-📈 Analytics dashboard with charts
-👤 Personalized user profile
-🔔 Toast notifications for alerts
-🛠️ Tech Stack
+A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, and email notifications.
 
-Frontend:
+---
 
-React.js
-Tailwind CSS
-Axios
-React Router
-Recharts
-React Hot Toast
+## 🚀 Tech Stack
 
-Backend:
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, Mongoose
+- **Authentication:** JWT, Passport.js
+- **Email Service:** Nodemailer
+- **Frontend:** React (Vite)
 
-Node.js
-Express.js
-MongoDB + Mongoose
-JWT Authentication
-Passport.js
-Nodemailer
-📁 Project Structure
-🔧 Backend
+---
+
+## 📁 Project Structure
+
+### 🔧 Backend
+
+```bash
 Backend/
 ├── config/
 │   ├── db.js
@@ -78,45 +65,38 @@ cd budget-flow
 2️⃣ Backend setup
 cd Backend
 npm install
-
-Create .env file:
-
-PORT=5000
-MONGO_URI=your_mongodb_uri
-JWT_SECRET=your_secret
-FRONTEND_URL=http://localhost:5173
-
-Run backend:
-
-npm start
 3️⃣ Frontend setup
 cd Frontend
 npm install
 npm run dev
 🔗 API Routes
-Auth
-POST /api/auth/register
-POST /api/auth/login
-GET /api/auth/profile
-Transactions
-GET /api/transactions
-POST /api/transactions
-PUT /api/transactions/:id
+🔐 Auth
+POST   /api/auth/register
+POST   /api/auth/login
+GET    /api/auth/profile
+💰 Transactions
+GET    /api/transactions
+POST   /api/transactions
+PUT    /api/transactions/:id
 DELETE /api/transactions/:id
-Budgets
-GET /api/budgets
-POST /api/budgets
-PUT /api/budgets/:id
+📊 Budgets
+GET    /api/budgets
+POST   /api/budgets
+PUT    /api/budgets/:id
 DELETE /api/budgets/:id
-GET /api/budgets/check?month=YYYY-MM
-Analytics
+GET    /api/budgets/check?month=YYYY-MM
+📈 Analytics
 GET /api/analytics/summary
 GET /api/analytics/category-stats
 GET /api/analytics/monthly-expenses
 GET /api/analytics/income-vs-expense
 📊 Future Improvements
-AI-based expense insights
-Export reports (PDF / Excel)
-Mobile app (React Native)
-Dark mode toggle
-Email notifications for budget alerts
+🤖 AI-based expense insights
+📄 Export reports (PDF / Excel)
+📱 Mobile app (React Native)
+🌙 Dark mode toggle
+📧 Email notifications for budget alerts
+👨‍💻 Author
+
+Mesandu
+MERN Stack Developer
