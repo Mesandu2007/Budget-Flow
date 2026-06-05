@@ -12,15 +12,15 @@ import Analytics from "./pages/Analytics";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-/* AUTH CHECK */
+
 const isAuth = () => localStorage.getItem("token");
 
-/* PROTECTED ROUTE */
+
 const Protected = ({ children }) => {
   return isAuth() ? children : <Navigate to="/login" replace />;
 };
 
-/* LAYOUT */
+
 function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 

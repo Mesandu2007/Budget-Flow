@@ -47,7 +47,7 @@ export default function Register() {
 
       <div className="w-full max-w-md bg-slate-800 p-8 rounded-xl shadow-lg">
 
-        {/* TITLE */}
+    
         <h1 className="text-2xl font-bold text-white text-center">
           💰 FinTrack
         </h1>
@@ -56,14 +56,14 @@ export default function Register() {
           Create your account and start tracking your finances
         </p>
 
-        {/* ERROR */}
+        
         {error && (
           <p className="text-red-500 text-sm text-center mb-3">
             {error}
           </p>
         )}
 
-        {/* FORM */}
+        
         <form onSubmit={handleSubmit} className="space-y-3">
 
           <input
@@ -84,7 +84,7 @@ export default function Register() {
             }
           />
 
-          {/* PASSWORD */}
+        
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -114,7 +114,7 @@ export default function Register() {
             }
           />
 
-          {/* BUTTON */}
+        
           <button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 p-3 rounded text-white font-medium"
@@ -123,7 +123,7 @@ export default function Register() {
           </button>
         </form>
 
-        {/* LOGIN LINK */}
+      
         <p className="text-sm text-gray-400 text-center mt-5">
           Already have an account?{" "}
           <Link to="/login" className="text-blue-400 hover:underline">

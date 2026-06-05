@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   return (
     <>
-      {/* OVERLAY (mobile only) */}
+    
       {sidebarOpen && (
         <div
           onClick={() => setSidebarOpen(false)}
@@ -20,7 +20,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
           md:translate-x-0 md:static md:block
         `}
       >
-        {/* CLOSE BUTTON (mobile only) */}
+        
         <button
           className="md:hidden mb-4"
           onClick={() => setSidebarOpen(false)}

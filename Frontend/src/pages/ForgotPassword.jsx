@@ -43,7 +43,7 @@ export default function ForgotPassword() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* EMAIL */}
+          
           <input
             type="email"
             placeholder="Enter your email"
@@ -53,21 +53,21 @@ export default function ForgotPassword() {
             required
           />
 
-          {/* SUCCESS MESSAGE */}
+      
           {message && (
             <p className="text-green-600 text-sm">
               {message}
             </p>
           )}
 
-          {/* ERROR MESSAGE */}
+      
           {error && (
             <p className="text-red-500 text-sm">
               {error}
             </p>
           )}
 
-          {/* BUTTON */}
+        
           <button
             type="submit"
             disabled={loading}

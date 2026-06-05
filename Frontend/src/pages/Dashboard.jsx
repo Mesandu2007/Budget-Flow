@@ -20,15 +20,15 @@ export default function Dashboard() {
       setError(null);
 
       try {
-        // USER PROFILE
+        
         const userRes = await getUserProfile();
         setUser(userRes.data);
 
-        // SUMMARY
+      
         const summaryRes = await getSummary();
         setSummary(summaryRes.data);
 
-        // BUDGET CHECK
+      
         const month = new Date().toISOString().slice(0, 7);
         const budgetRes = await checkBudget(month);
 
@@ -67,7 +67,7 @@ export default function Dashboard() {
     return "Good Evening";
   };
 
-  // LOADING
+  
   if (loading) {
     return (
       <div className="flex items-center justify-center h-[70vh]">
@@ -78,7 +78,7 @@ export default function Dashboard() {
     );
   }
 
-  // ERROR
+  
   if (error) {
     return (
       <div className="flex items-center justify-center h-[70vh]">
@@ -89,7 +89,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      {/* HEADER */}
+      
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-800">
           {getGreeting()}, {user?.name || "User"} 👋
@@ -100,9 +100,9 @@ export default function Dashboard() {
         </p>
       </div>
 
-      {/* SUMMARY CARDS */}
+      
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* INCOME */}
+        
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <h3 className="text-gray-500 text-sm mb-2">
             Total Income
@@ -113,7 +113,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* EXPENSE */}
+        
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <h3 className="text-gray-500 text-sm mb-2">
             Total Expense
@@ -124,7 +124,7 @@ export default function Dashboard() {
           </p>
         </div>
 
-        {/* BALANCE */}
+        
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <h3 className="text-gray-500 text-sm mb-2">
             Balance

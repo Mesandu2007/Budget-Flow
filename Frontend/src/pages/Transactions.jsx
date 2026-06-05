@@ -11,6 +11,11 @@ export default function Transactions() {
   const [open, setOpen] = useState(false);
   const [editId, setEditId] = useState(null);
 
+  
+  const [search, setSearch] = useState("");
+  const [filterType, setFilterType] = useState("all");
+  const [filterCategory, setFilterCategory] = useState("all");
+
   const [form, setForm] = useState({
     amount: "",
     type: "expense",
@@ -32,7 +37,7 @@ export default function Transactions() {
     }
   };
 
-  /* OPEN ADD MODAL */
+  
   const openAdd = () => {
     setForm({
       amount: "",
@@ -46,23 +51,20 @@ export default function Transactions() {
     setOpen(true);
   };
 
-  /* OPEN EDIT MODAL */
+  
   const openEdit = (t) => {
     setForm({
       amount: t.amount,
       type: t.type,
       category: t.category,
       description: t.description,
-      date: t.date
-        ? new Date(t.date).toISOString().split("T")[0]
-        : "",
+      date: t.date ? new Date(t.date).toISOString().split("T")[0] : "",
     });
 
     setEditId(t._id);
     setOpen(true);
   };
 
-  /* CREATE / UPDATE */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -80,7 +82,6 @@ export default function Transactions() {
     }
   };
 
-  /* DELETE */
   const handleDelete = async (id) => {
     try {
       await deleteTransaction(id);
@@ -90,15 +91,26 @@ export default function Transactions() {
     }
   };
 
+  
+  const filteredTransactions = transactions.filter((t) => {
+    const matchesSearch =
+      t.description?.toLowerCase().includes(search.toLowerCase()) ||
+      t.category?.toLowerCase().includes(search.toLowerCase());
+
+    const matchesType =
+      filterType === "all" || t.type === filterType;
+
+    const matchesCategory =
+      filterCategory === "all" || t.category === filterCategory;
+
+    return matchesSearch && matchesType && matchesCategory;
+  });
+
   return (
     <div>
-
-      {/* HEADER */}
+    
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
-
-        <h2 className="text-2xl font-bold text-gray-800">
-          Transactions
-        </h2>
+        <h2 className="text-2xl font-bold text-gray-800">Transactions</h2>
 
         <button
           onClick={openAdd}
@@ -108,28 +120,55 @@ export default function Transactions() {
         </button>
       </div>
 
-      {/* TRANSACTION LIST */}
-      <div className="space-y-3">
+  
+      <div className="flex flex-col sm:flex-row gap-3 mb-6">
+        <input
+          type="text"
+          placeholder="Search by category or description..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="border w-full sm:w-1/3 p-3 rounded-lg"
+        />
 
-        {transactions.map((t) => (
+        <select
+          value={filterType}
+          onChange={(e) => setFilterType(e.target.value)}
+          className="border w-full sm:w-1/4 p-3 rounded-lg"
+        >
+          <option value="all">All Types</option>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+          className="border w-full sm:w-1/4 p-3 rounded-lg"
+        >
+          <option value="all">All Categories</option>
+          <option value="food">Food</option>
+          <option value="transport">Transport</option>
+          <option value="bills">Bills</option>
+          <option value="shopping">Shopping</option>
+          <option value="salary">Salary</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+    
+      <div className="space-y-3">
+        {filteredTransactions.map((t) => (
           <div
             key={t._id}
             className="bg-white rounded-xl shadow-sm p-4 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4"
           >
-
-            {/* LEFT */}
             <div>
               <div className="flex items-center gap-2">
-
-                <p className="font-semibold capitalize">
-                  {t.category}
-                </p>
+                <p className="font-semibold capitalize">{t.category}</p>
 
                 <span
                   className={`text-xs px-2 py-1 rounded-full text-white ${
-                    t.type === "income"
-                      ? "bg-green-500"
-                      : "bg-red-500"
+                    t.type === "income" ? "bg-green-500" : "bg-red-500"
                   }`}
                 >
                   {t.type}
@@ -145,12 +184,8 @@ export default function Transactions() {
               </p>
             </div>
 
-            {/* RIGHT */}
             <div className="flex items-center gap-4">
-
-              <p className="font-bold text-lg">
-                Rs. {t.amount}
-              </p>
+              <p className="font-bold text-lg">Rs. {t.amount}</p>
 
               <button
                 onClick={() => openEdit(t)}
@@ -165,25 +200,20 @@ export default function Transactions() {
               >
                 Delete
               </button>
-
             </div>
           </div>
         ))}
       </div>
 
-      {/* MODAL */}
+      
       {open && (
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50 px-4">
-
           <div className="bg-white w-full max-w-md rounded-2xl shadow-xl p-6">
-
             <h2 className="text-xl font-bold mb-5">
               {editId ? "Edit Transaction" : "Add Transaction"}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-
-              {/* AMOUNT */}
               <input
                 type="number"
                 placeholder="Amount"
@@ -194,7 +224,6 @@ export default function Transactions() {
                 }
               />
 
-              {/* TYPE */}
               <select
                 className="border w-full p-3 rounded-lg"
                 value={form.type}
@@ -206,7 +235,6 @@ export default function Transactions() {
                 <option value="expense">Expense</option>
               </select>
 
-              {/* CATEGORY */}
               <select
                 className="border w-full p-3 rounded-lg"
                 value={form.category}
@@ -222,7 +250,6 @@ export default function Transactions() {
                 <option value="other">Other</option>
               </select>
 
-              {/* DESCRIPTION */}
               <input
                 type="text"
                 placeholder="Description"
@@ -233,7 +260,6 @@ export default function Transactions() {
                 }
               />
 
-              {/* DATE */}
               <input
                 type="date"
                 className="border w-full p-3 rounded-lg"
@@ -243,9 +269,7 @@ export default function Transactions() {
                 }
               />
 
-              {/* BUTTONS */}
               <div className="flex justify-end gap-3 pt-2">
-
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
@@ -260,7 +284,6 @@ export default function Transactions() {
                 >
                   Save
                 </button>
-
               </div>
             </form>
           </div>

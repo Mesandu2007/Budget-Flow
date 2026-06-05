@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import IncomeExpenseChart from "../components/IncomeExpenseChart";
-import CategoryPieChart from "../components/categoryPieChart";
+import CategoryPieChart from "../components/CategoryPieChart";
 
 import {
   getIncomeVsExpense,
@@ -56,7 +56,7 @@ export default function Analytics() {
     try {
       const res = await getCategoryStats();
 
-      // Normalize data: map _id to category and ensure total is a Number
+      
       const processedData = res.data.map((item) => ({
         name: item.category || item._id || "Other",
         total: Number(item.total) || 0,
@@ -80,12 +80,12 @@ export default function Analytics() {
         </p>
       </div>
 
-      {/* CHARTS GRID */}
+      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* INCOME VS EXPENSE */}
+  
         <IncomeExpenseChart data={chartData} />
 
-        {/* CATEGORY PIE CHART */}
+        
         <CategoryPieChart data={categoryData} />
       </div>
     </div>

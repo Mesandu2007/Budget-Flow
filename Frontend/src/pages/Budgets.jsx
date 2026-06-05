@@ -58,7 +58,7 @@ export default function Budgets() {
   return (
     <div>
 
-      {/* HEADER */}
+      
       <div className="flex justify-between mb-4">
         <h2 className="text-xl font-bold">Budgets</h2>
 
@@ -70,7 +70,7 @@ export default function Budgets() {
         </button>
       </div>
 
-      {/* LIST */}
+      
       <div className="space-y-2">
         {budgets.map((b) => (
           <div
@@ -101,7 +101,7 @@ export default function Budgets() {
         ))}
       </div>
 
-      {/* MODAL */}
+      
       {open && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-6 rounded w-96">

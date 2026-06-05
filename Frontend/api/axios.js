@@ -142,7 +142,7 @@ export const getSummary = async () => {
 export const getCategoryStats = async () => {
   const token = localStorage.getItem("token");
 
-  return axios.get(`${API_URL}/analytics/category-stats`, {
+  return axios.get(`${API_URL}/analytics/categories`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

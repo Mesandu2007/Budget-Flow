@@ -17,9 +17,15 @@ const CategoryPieChart = ({ data }) => {
     "#82ca9d",
   ];
 
-  if (!data || data.length === 0) {
+  
+  const formattedData = data?.map((item) => ({
+    ...item,
+    total: Number(item.total),
+  }));
+
+  if (!formattedData || formattedData.length === 0) {
     return (
-      <div className="bg-white p-5 rounded-xl shadow flex flex-col items-center justify-center min-h-[360px]">
+      <div className="bg-white p-5 rounded-xl shadow h-[360px] flex flex-col items-center justify-center">
         <h2 className="text-lg font-semibold mb-4 self-start">
           Expenses by Category
         </h2>
@@ -32,28 +38,25 @@ const CategoryPieChart = ({ data }) => {
   }
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow min-h-[360px]">
-
+    <div className="bg-white p-5 rounded-xl shadow h-[360px]">
       <h2 className="text-lg font-semibold mb-4">
         Expenses by Category
       </h2>
 
-      <ResponsiveContainer width="100%" height={300}>
+      <ResponsiveContainer width="100%" height="90%">
         <PieChart>
-
           <Pie
-            data={data}
-            dataKey="value"
-            nameKey="name"
+            data={formattedData}
+            dataKey="total"
+            nameKey="category"
             cx="50%"
             cy="50%"
-            outerRadius={100}
-            innerRadius={60}
+            outerRadius={110}
             label
           >
-            {data.map((_, index) => (
+            {formattedData.map((_, index) => (
               <Cell
-                key={index}
+                key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}
               />
             ))}
@@ -61,7 +64,6 @@ const CategoryPieChart = ({ data }) => {
 
           <Tooltip />
           <Legend />
-
         </PieChart>
       </ResponsiveContainer>
     </div>

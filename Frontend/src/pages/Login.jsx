@@ -15,7 +15,7 @@ export default function Login() {
     try {
       setError("");
 
-      // basic validation
+      
       if (!form.email || !form.password) {
         setError("Email and password are required");
         return;
@@ -26,13 +26,13 @@ export default function Login() {
         return;
       }
 
-      // API call
+  
       const res = await loginUser(form);
 
-      // Store token
+      
       localStorage.setItem("token", res.data.token);
 
-      // redirect after login
+      
       navigate("/dashboard");
 
     } catch (err) {
@@ -46,12 +46,12 @@ export default function Login() {
   return (
     <div className="min-h-screen flex flex-col bg-slate-900">
 
-      {/* CENTER */}
+    
       <div className="flex-grow flex items-center justify-center px-4">
 
         <div className="w-full max-w-md bg-slate-800 p-8 rounded-xl shadow-lg">
 
-          {/* TITLE */}
+      
           <h1 className="text-2xl font-bold text-white text-center">
             💰 Fin Buddy
           </h1>
@@ -60,7 +60,7 @@ export default function Login() {
             Login to manage your finances
           </p>
 
-          {/* FORM */}
+          
           <form onSubmit={handleSubmit}>
 
             {error && (
@@ -69,7 +69,7 @@ export default function Login() {
               </p>
             )}
 
-            {/* EMAIL */}
+          
             <input
               type="email"
               placeholder="Email"
@@ -80,7 +80,7 @@ export default function Login() {
               }
             />
 
-            {/* PASSWORD */}
+            
             <div className="relative mb-2">
 
               <input
@@ -93,7 +93,7 @@ export default function Login() {
                 }
               />
 
-              {/* TOGGLE */}
+            
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -114,7 +114,7 @@ export default function Login() {
               </Link>
             </div>
 
-            {/* LOGIN BUTTON */}
+            
             <button
               type="submit"
               className="w-full bg-blue-500 hover:bg-blue-600 p-3 rounded text-white font-medium"
@@ -124,7 +124,7 @@ export default function Login() {
 
           </form>
 
-          {/* REGISTER */}
+          
           <p className="text-sm text-gray-400 text-center mt-5">
             Don’t have an account?{" "}
             <Link to="/register" className="text-blue-400 hover:underline">
@@ -135,7 +135,7 @@ export default function Login() {
         </div>
       </div>
 
-      {/* FOOTER */}
+      
       <footer className="py-4 text-center text-gray-500 text-xs">
         &copy; {new Date().getFullYear()} Fin Buddy. All rights reserved.
       </footer>
