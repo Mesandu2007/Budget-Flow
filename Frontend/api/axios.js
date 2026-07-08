@@ -1,170 +1,41 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+const API = axios.create({
+  baseURL: "http://localhost:5000/api", 
+});
 
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("token")) {
+    req.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+  }
+  return req;
+});
 
-export const registerUser = async (data) => {
-  return axios.post(`${API_URL}/auth/register`, data);
-};
+// Transaction routes
+export const getTransactions = () => API.get("/transactions");
+export const createTransaction = (data) => API.post("/transactions", data);
+export const updateTransaction = (id, data) => API.patch(`/transactions/${id}`, data);
+export const deleteTransaction = (id) => API.delete(`/transactions/${id}`);
 
-export const loginUser = async (data) => {
-  return axios.post(`${API_URL}/auth/login`, data);
-};
+// Budget routes
+export const getBudgets = () => API.get("/budgets");
+export const createBudget = (data) => API.post("/budgets", data);
+export const updateBudget = (id, data) => API.patch(`/budgets/${id}`, data);
+export const deleteBudget = (id) => API.delete(`/budgets/${id}`);
+export const checkBudget = (month) => API.get(`/budgets/check/${month}`);
 
-export const getUserProfile = async () => {
-  const token = localStorage.getItem("token");
+// Analytics routes
+export const getSpendingInsights = () => API.get("/analytics/insights");
+export const getSummary = () => API.get("/analytics/summary");
+export const getIncomeVsExpense = () => API.get("/analytics/income-vs-expense");
+export const getMonthlyExpenses = () => API.get("/analytics/monthly-expenses");
+export const getCategoryStats = () => API.get("/analytics/category-stats");
 
-  return axios.get(`${API_URL}/auth/profile`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+// Auth routes
+export const loginUser = (data) => API.post("/auth/login", data);
+export const registerUser = (data) => API.post("/auth/register", data);
+export const getUserProfile = () => API.get("/auth/profile");
+export const forgotPassword = (data) => API.post("/auth/forgot-password", data);
+export const resetPassword = (token, data) => API.post(`/auth/reset-password/${token}`, data);
 
-export const forgotPassword = async (data) => {
-  return axios.post(`${API_URL}/auth/forgot-password`, data);
-};
-
-export const resetPassword = async (token, data) => {
-  return axios.post(
-    `${API_URL}/auth/reset-password/${token}`,
-    data
-  );
-};
-
-
-
-export const getTransactions = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/transactions`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const createTransaction = async (data) => {
-  const token = localStorage.getItem("token");
-
-  return axios.post(`${API_URL}/transactions`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const updateTransaction = async (id, data) => {
-  const token = localStorage.getItem("token");
-
-  return axios.put(`${API_URL}/transactions/${id}`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const deleteTransaction = async (id) => {
-  const token = localStorage.getItem("token");
-
-  return axios.delete(`${API_URL}/transactions/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-
-
-export const getBudgets = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/budgets`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const createBudget = async (data) => {
-  const token = localStorage.getItem("token");
-
-  return axios.post(`${API_URL}/budgets`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const updateBudget = async (id, data) => {
-  const token = localStorage.getItem("token");
-
-  return axios.put(`${API_URL}/budgets/${id}`, data, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const deleteBudget = async (id) => {
-  const token = localStorage.getItem("token");
-
-  return axios.delete(`${API_URL}/budgets/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const checkBudget = async (month) => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(
-    `${API_URL}/budgets/check?month=${month}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-};
-
-export const getSummary = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/analytics/summary`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const getCategoryStats = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/analytics/categories`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const getMonthlyExpenses = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/analytics/monthly-expenses`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
-
-export const getIncomeVsExpense = async () => {
-  const token = localStorage.getItem("token");
-
-  return axios.get(`${API_URL}/analytics/income-vs-expense`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+export default API;

@@ -17,15 +17,9 @@ const CategoryPieChart = ({ data }) => {
     "#82ca9d",
   ];
 
-  
-  const formattedData = data?.map((item) => ({
-    ...item,
-    total: Number(item.total),
-  }));
-
-  if (!formattedData || formattedData.length === 0) {
+  if (!data || data.length === 0) {
     return (
-      <div className="bg-white p-5 rounded-xl shadow h-[360px] flex flex-col items-center justify-center">
+      <div className="bg-white p-6 rounded-xl shadow-sm border flex flex-col items-center justify-center text-gray-500 h-full">
         <h2 className="text-lg font-semibold mb-4 self-start">
           Expenses by Category
         </h2>
@@ -38,23 +32,23 @@ const CategoryPieChart = ({ data }) => {
   }
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow h-[360px]">
+    <div className="bg-white p-5 rounded-xl shadow h-full flex flex-col">
       <h2 className="text-lg font-semibold mb-4">
         Expenses by Category
       </h2>
 
-      <ResponsiveContainer width="100%" height="90%">
+      <ResponsiveContainer width="100%" height={280}>
         <PieChart>
           <Pie
-            data={formattedData}
-            dataKey="total"
-            nameKey="category"
+            data={data}
+            dataKey="value"
+            nameKey="name"
             cx="50%"
             cy="50%"
             outerRadius={110}
             label
           >
-            {formattedData.map((_, index) => (
+            {data.map((_, index) => (
               <Cell
                 key={`cell-${index}`}
                 fill={COLORS[index % COLORS.length]}

@@ -22,52 +22,50 @@ export default function IncomeExpenseChart({ data }) {
         </span>
       </div>
 
-      <div className="h-[300px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
-          >
+      <ResponsiveContainer width="100%" height={300}>
+        <BarChart
+          data={data}
+          margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+        >
 
-            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
 
-            <XAxis
-              dataKey="name"
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12 }}
-              dy={10}
-            />
+          <XAxis
+            dataKey="name"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 12 }}
+            dy={10}
+          />
 
-            <YAxis
-              axisLine={false}
-              tickLine={false}
-              tick={{ fontSize: 12 }}
-            />
+          <YAxis
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 12 }}
+          />
 
-            <Tooltip />
+          <Tooltip />
 
-            <Legend />
+          <Legend />
 
-            <Bar
-              name="Income"
-              dataKey="income"
-              fill="#10b981"
-              radius={[4, 4, 0, 0]}
-              barSize={32}
-            />
+          <Bar
+            name="Income"
+            dataKey="income"
+            fill="#10b981"
+            radius={[4, 4, 0, 0]}
+            barSize={32}
+          />
 
-            <Bar
-              name="Expense"
-              dataKey="expense"
-              fill="#ef4444"
-              radius={[4, 4, 0, 0]}
-              barSize={32}
-            />
+          <Bar
+            name="Expense"
+            dataKey="expense"
+            fill="#ef4444"
+            radius={[4, 4, 0, 0]}
+            barSize={32}
+          />
 
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
