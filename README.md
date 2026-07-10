@@ -1,13 +1,14 @@
 
 # 📊 Budget Flow – MERN Finance Tracker
 
-A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, and email notifications.
+A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, AI insights and email notifications.
 
 ---
 
 ## 🚀 Tech Stack
 
 - **Backend:** Node.js, Express.js
+- **AI:** Groq AI API
 - **Database:** MongoDB, Mongoose
 - **Authentication:** JWT, Passport.js
 - **Email Service:** Nodemailer
@@ -50,14 +51,51 @@ Backend/
 │
 ├── server.js
 ├── .env
-🎨 Frontend
-Frontend/
+
+
+###  Frontend
+
+```bash
+
+frontend/
+│
+├── api/
+│ └── axios.js
+│
+├── public/
+│
 ├── src/
-│   ├── pages/
-│   ├── components/
-│   ├── api/
-│   ├── App.jsx
-│   ├── main.jsx
+│ │
+│ ├── assets/
+│ │
+│ ├── components/
+│ │ ├── CategoryPieChart.jsx
+│ │ ├── IncomeExpenseChart.jsx
+│ │ ├── navbar.jsx
+│ │ └── sidebar.jsx
+│ │
+│ ├── pages/
+│ │ ├── Analytics.jsx
+│ │ ├── Budgets.jsx
+│ │ ├── Dashboard.jsx
+│ │ ├── ForgotPassword.jsx
+│ │ ├── Login.jsx
+│ │ ├── Register.jsx
+│ │ ├── Reset.jsx
+│ │ ├── ResetPassword.jsx
+│ │ └── Transactions.jsx
+│ │
+│ ├── App.css
+│ ├── App.jsx
+│ ├── index.css
+│ └── main.jsx
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+└── package-lock.json
+
 ⚙️ Installation & Setup
 
 1️⃣ Clone repository
