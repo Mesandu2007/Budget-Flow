@@ -98,53 +98,51 @@ frontend/
 
 ```
 
-⚙️ Installation & Setup
+## 🔗 API Routes
 
-1️⃣ Clone repository
-git clone https://github.com/your-username/budget-flow.git
-cd budget-flow
+### 🔐 Authentication
 
-2️⃣ Backend setup
-cd Backend
-npm install
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login user |
+| GET | `/api/auth/profile` | Get user profile |
 
-3️⃣ Frontend setup
-cd Frontend
-npm install
-npm run dev
+---
 
-🔗 API Routes
-🔐 Auth
-POST   /api/auth/register
-POST   /api/auth/login
-GET    /api/auth/profile
+### 💰 Transactions
 
-💰 Transactions
-GET    /api/transactions
-POST   /api/transactions
-PUT    /api/transactions/:id
-DELETE /api/transactions/:id
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/transactions` | Get all transactions |
+| POST | `/api/transactions` | Create transaction |
+| PUT | `/api/transactions/:id` | Update transaction |
+| DELETE | `/api/transactions/:id` | Delete transaction |
 
-📊 Budgets
-GET    /api/budgets
-POST   /api/budgets
-PUT    /api/budgets/:id
-DELETE /api/budgets/:id
-GET    /api/budgets/check?month=YYYY-MM
+---
 
-📈 Analytics
-GET /api/analytics/summary
-GET /api/analytics/category-stats
-GET /api/analytics/monthly-expenses
-GET /api/analytics/income-vs-expense
+### 📊 Budgets
 
-📊 Future Improvements
-🤖 AI-based expense insights
-📄 Export reports (PDF / Excel)
-📱 Mobile app (React Native)
-🌙 Dark mode toggle
-📧 Email notifications for budget alerts
-👨‍💻 Author
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/budgets` | Get all budgets |
+| POST | `/api/budgets` | Create budget |
+| PUT | `/api/budgets/:id` | Update budget |
+| DELETE | `/api/budgets/:id` | Delete budget |
+| GET | `/api/budgets/check?month=YYYY-MM` | Check budget status |
+
+---
+
+### 📈 Analytics
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/analytics/summary` | Get financial summary |
+| GET | `/api/analytics/category-stats` | Get category statistics |
+| GET | `/api/analytics/monthly-expenses` | Get monthly expenses |
+| GET | `/api/analytics/income-vs-expense` | Compare income and expenses |
+
+
 
 Mesandu
 MERN Stack Developer
