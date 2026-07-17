@@ -96,6 +96,8 @@ frontend/
 ├── package.json
 └── package-lock.json
 
+```
+
 ⚙️ Installation & Setup
 
 1️⃣ Clone repository
