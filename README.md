@@ -73,6 +73,7 @@ The application enables users to understand their spending behaviour, monitor bu
 
 ## 🚀 Tech Stack
 
+- **Frontend:** React.js, Tailwind css
 - **Backend:** Node.js, Express.js
 - **AI:** Groq AI API
 - **Database:** MongoDB, Mongoose
