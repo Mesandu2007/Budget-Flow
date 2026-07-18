@@ -1,13 +1,14 @@
 
 # 📊 Budget Flow – MERN Finance Tracker
 
-A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, and email notifications.
+A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, AI insights and email notifications.
 
 ---
 
 ## 🚀 Tech Stack
 
 - **Backend:** Node.js, Express.js
+- **AI:** Groq AI API
 - **Database:** MongoDB, Mongoose
 - **Authentication:** JWT, Passport.js
 - **Email Service:** Nodemailer
@@ -50,61 +51,99 @@ Backend/
 │
 ├── server.js
 ├── .env
-🎨 Frontend
-Frontend/
+
+```
+
+###  Frontend
+
+```bash
+
+frontend/
+│
+├── api/
+│ └── axios.js
+│
+├── public/
+│
 ├── src/
-│   ├── pages/
-│   ├── components/
-│   ├── api/
-│   ├── App.jsx
-│   ├── main.jsx
-⚙️ Installation & Setup
+│ │
+│ ├── assets/
+│ │
+│ ├── components/
+│ │ ├── CategoryPieChart.jsx
+│ │ ├── IncomeExpenseChart.jsx
+│ │ ├── navbar.jsx
+│ │ └── sidebar.jsx
+│ │
+│ ├── pages/
+│ │ ├── Analytics.jsx
+│ │ ├── Budgets.jsx
+│ │ ├── Dashboard.jsx
+│ │ ├── ForgotPassword.jsx
+│ │ ├── Login.jsx
+│ │ ├── Register.jsx
+│ │ ├── Reset.jsx
+│ │ ├── ResetPassword.jsx
+│ │ └── Transactions.jsx
+│ │
+│ ├── App.css
+│ ├── App.jsx
+│ ├── index.css
+│ └── main.jsx
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+└── package-lock.json
 
-1️⃣ Clone repository
-git clone https://github.com/your-username/budget-flow.git
-cd budget-flow
+```
 
-2️⃣ Backend setup
-cd Backend
-npm install
+## 🔗 API Routes
 
-3️⃣ Frontend setup
-cd Frontend
-npm install
-npm run dev
+### 🔐 Authentication
 
-🔗 API Routes
-🔐 Auth
-POST   /api/auth/register
-POST   /api/auth/login
-GET    /api/auth/profile
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login user |
+| GET | `/api/auth/profile` | Get user profile |
 
-💰 Transactions
-GET    /api/transactions
-POST   /api/transactions
-PUT    /api/transactions/:id
-DELETE /api/transactions/:id
+---
 
-📊 Budgets
-GET    /api/budgets
-POST   /api/budgets
-PUT    /api/budgets/:id
-DELETE /api/budgets/:id
-GET    /api/budgets/check?month=YYYY-MM
+### 💰 Transactions
 
-📈 Analytics
-GET /api/analytics/summary
-GET /api/analytics/category-stats
-GET /api/analytics/monthly-expenses
-GET /api/analytics/income-vs-expense
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/transactions` | Get all transactions |
+| POST | `/api/transactions` | Create transaction |
+| PUT | `/api/transactions/:id` | Update transaction |
+| DELETE | `/api/transactions/:id` | Delete transaction |
 
-📊 Future Improvements
-🤖 AI-based expense insights
-📄 Export reports (PDF / Excel)
-📱 Mobile app (React Native)
-🌙 Dark mode toggle
-📧 Email notifications for budget alerts
-👨‍💻 Author
+---
+
+### 📊 Budgets
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/budgets` | Get all budgets |
+| POST | `/api/budgets` | Create budget |
+| PUT | `/api/budgets/:id` | Update budget |
+| DELETE | `/api/budgets/:id` | Delete budget |
+| GET | `/api/budgets/check?month=YYYY-MM` | Check budget status |
+
+---
+
+### 📈 Analytics
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/analytics/summary` | Get financial summary |
+| GET | `/api/analytics/category-stats` | Get category statistics |
+| GET | `/api/analytics/monthly-expenses` | Get monthly expenses |
+| GET | `/api/analytics/income-vs-expense` | Compare income and expenses |
+
+
 
 Mesandu
 MERN Stack Developer
