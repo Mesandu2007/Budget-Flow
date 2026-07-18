@@ -64,14 +64,11 @@ const createAIPrompt = (currentSpending, previousSpending) => {
   `;
 };
 
-// @desc    Get AI-powered spending insights
-// @route   GET /api/analytics/insights
-// @access  Private
 exports.getSpendingInsights = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    // 1. Fetch transactions for the current and previous month
+    
     const today = new Date();
     const currentMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
     const previousMonthStart = new Date(today.getFullYear(), today.getMonth() - 1, 1);
@@ -87,7 +84,7 @@ exports.getSpendingInsights = async (req, res) => {
       date: { $gte: previousMonthStart, $lte: previousMonthEnd },
     });
 
-    // 2. Process data
+    
     const currentSpending = processTransactions(currentMonthTransactions);
     const previousSpending = processTransactions(previousMonthTransactions);
 
@@ -98,19 +95,19 @@ exports.getSpendingInsights = async (req, res) => {
       });
     }
 
-    // 3. Create prompt and call Groq API
+  
     const prompt = createAIPrompt(currentSpending, previousSpending);
 
     let chatCompletion;
     try {
       chatCompletion = await groq.chat.completions.create({
         messages: [{ role: "user", content: prompt }],
-        model: "llama-3.1-8b-instant", // A fast and capable model
+        model: "llama-3.1-8b-instant", 
         temperature: 0.7,
         response_format: { type: "json_object" },
       });
     } catch (apiError) {
-      console.error("Full Groq API Error:", apiError); // Log the full error for detailed debugging
+      console.error("Full Groq API Error:", apiError); 
       let errorMessage = "Failed to communicate with the AI service.";
       if (apiError instanceof Groq.APIError) {
         errorMessage = `Groq API Error (${apiError.status}): ${apiError.message}`;
@@ -146,9 +143,7 @@ exports.getSpendingInsights = async (req, res) => {
   }
 };
 
-// @desc    Get financial summary for the current month
-// @route   GET /api/analytics/summary
-// @access  Private
+
 exports.getSummary = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -182,22 +177,20 @@ exports.getSummary = async (req, res) => {
   }
 };
 
-// @desc    Get expense statistics by category for a given month
-// @route   GET /api/analytics/category-stats
-// @access  Private
+
 exports.getCategoryStats = async (req, res) => {
   try {
     const userId = req.user.id;
-    const { month } = req.query; // Expects "YYYY-MM" format
+    const { month } = req.query; 
 
     let startDate, endDate;
 
     if (month && /^\d{4}-\d{2}$/.test(month)) {
       const [year, monthNum] = month.split("-").map(Number);
       startDate = new Date(year, monthNum - 1, 1);
-      endDate = new Date(year, monthNum, 0, 23, 59, 59, 999); // End of the specified month
+      endDate = new Date(year, monthNum, 0, 23, 59, 59, 999); 
     } else {
-      // Default to the current month if no valid month is provided
+      
       const today = new Date();
       startDate = new Date(today.getFullYear(), today.getMonth(), 1);
       endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0, 23, 59, 59, 999);
@@ -218,9 +211,7 @@ exports.getCategoryStats = async (req, res) => {
   }
 };
 
-// @desc    Get income vs expense data for the last 12 months
-// @route   GET /api/analytics/income-vs-expense
-// @access  Private
+
 exports.getIncomeVsExpense = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -269,9 +260,7 @@ exports.getIncomeVsExpense = async (req, res) => {
   }
 };
 
-// @desc    Get total expenses for each of the last 12 months
-// @route   GET /api/analytics/monthly-expenses
-// @access  Private
+
 exports.getMonthlyExpenses = async (req, res) => {
   try {
     const userId = req.user.id;

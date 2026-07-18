@@ -34,9 +34,7 @@ exports.createBudget = async (req, res) => {
 };
 
 
-// ======================
-// GET BUDGETS
-// ======================
+
 exports.getBudgets = async (req, res) => {
   try {
     const budgets = await Budget.find({ user: req.user._id });
@@ -48,9 +46,7 @@ exports.getBudgets = async (req, res) => {
 };
 
 
-// ======================
-// UPDATE BUDGET
-// ======================
+
 exports.updateBudget = async (req, res) => {
   try {
     const updated = await Budget.findOneAndUpdate(
@@ -71,9 +67,7 @@ exports.updateBudget = async (req, res) => {
 };
 
 
-// ======================
-// DELETE BUDGET
-// ======================
+
 exports.deleteBudget = async (req, res) => {
   try {
     const deleted = await Budget.findOneAndDelete({
@@ -93,9 +87,7 @@ exports.deleteBudget = async (req, res) => {
 };
 
 
-// ======================
-// CHECK BUDGET STATUS (FIXED MONTH PARSING)
-// ======================
+
 exports.checkBudget = async (req, res) => {
   try {
     const { month } = req.query;
@@ -106,7 +98,7 @@ exports.checkBudget = async (req, res) => {
       });
     }
 
-    // FIXED: robust month parsing
+    
     const [year, monthNum] = month.split("-");
 
     const start = new Date(year, monthNum - 1, 1);
@@ -121,7 +113,7 @@ exports.checkBudget = async (req, res) => {
       return res.json({ msg: "No budget set for this month" });
     }
 
-    // Get total expenses for that month
+    
     const expenses = await Transaction.find({
       user: req.user._id,
       type: "expense",

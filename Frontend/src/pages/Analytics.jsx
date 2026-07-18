@@ -21,7 +21,7 @@ export default function Analytics() {
       setLoading(true);
       setError(null);
       try {
-        // Fetch all data in parallel
+    
         const [incomeExpenseRes, categoryStatsRes, insightsRes] = await Promise.all([
           getIncomeVsExpense(),
           getCategoryStats(),
@@ -38,14 +38,13 @@ export default function Analytics() {
         );
         setChartData(incomeExpenseData);
 
-        // Backend now returns aggregated data, so we can use it directly.
-        const pieChartData = (Array.isArray(categoryStatsRes.data) ? categoryStatsRes.data : [])
-          .map(item => ({
-            name: item._id, // Rename '_id' to 'name' for the pie chart
-            value: item.value,
-          }))
-          .sort((a, b) => b.value - a.value); // Sort for better visualization
         
+        const categoryStatsObject = categoryStatsRes.data || {};
+        const pieChartData = Object.entries(categoryStatsObject)
+          .map(([name, value]) => ({
+            name,
+            value,
+          })).sort((a, b) => b.value - a.value);
         setCategoryData(pieChartData);
         
         // Set AI insights
@@ -102,7 +101,7 @@ export default function Analytics() {
         )}
       </div>
 
-      {/* AI INSIGHTS SECTION */}
+      
       <div className="mt-8">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-gray-800">AI Insights</h2>

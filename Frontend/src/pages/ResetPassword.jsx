@@ -31,7 +31,7 @@ export default function ResetPassword() {
 
       setMessage(res.data.msg || "Password reset successful");
 
-      // redirect to login after 2 seconds
+  
       setTimeout(() => {
         navigate("/login");
       }, 2000);
@@ -46,54 +46,49 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-slate-900">
+      <div className="bg-slate-800 p-8 rounded-xl shadow-md w-full max-w-md">
 
-        <h2 className="text-2xl font-bold text-center mb-6">
+        <h2 className="text-2xl font-bold text-center text-white mb-6">
           Reset Password
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
 
-          {/* PASSWORD */}
           <input
             type="password"
             placeholder="New password"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 rounded bg-slate-700 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          {/* CONFIRM PASSWORD */}
           <input
             type="password"
             placeholder="Confirm password"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            className="w-full p-3 rounded bg-slate-700 text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
 
-          {/* SUCCESS */}
           {message && (
             <p className="text-green-600 text-sm">
               {message}
             </p>
           )}
 
-          {/* ERROR */}
           {error && (
             <p className="text-red-500 text-sm">
               {error}
             </p>
           )}
 
-          {/* BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition"
+            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition"
           >
             {loading ? "Resetting..." : "Reset Password"}
           </button>
