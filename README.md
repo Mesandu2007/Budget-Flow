@@ -1,7 +1,73 @@
 
 # 📊 Budget Flow – MERN Finance Tracker
 
-A full-stack finance tracking application built with the MERN stack featuring authentication, budgets, transactions, analytics, AI insights and email notifications.
+# 💰 Finance Tracker - AI Powered Personal Finance Management Platform
+
+A full-stack personal finance tracking application built using the **MERN stack (MongoDB, Express.js, React.js, Node.js)** that helps users manage their income, expenses, and budgets efficiently. The platform provides secure authentication, transaction management, budget tracking, advanced analytics, AI-powered financial insights, and automated notifications using scheduled background jobs.
+
+The application enables users to understand their spending behaviour, monitor budgets, detect overspending patterns, and receive intelligent recommendations to improve their financial decisions.
+
+## 🚀 Features
+
+## 🔐 Authentication & Security
+- Secure user registration and login system
+- JWT-based authentication and authorization
+- Password encryption using bcrypt
+- Protected API routes
+- User-specific financial data management
+
+---
+
+## 💳 Transaction Management
+- Create, update, and delete income and expense transactions
+- Categorize transactions for better financial organization
+- Track transaction details:
+  - Amount
+  - Category
+  - Date
+  - Description
+- View complete transaction history
+- Filter and analyze transactions based on categories and dates
+
+---
+
+## 📊 Budget Management
+- Create monthly budgets for different spending categories
+- Set spending limits and financial goals
+- Track budget usage in real time
+- Compare actual expenses with planned budgets
+- Monitor category-wise spending performance
+
+---
+
+## 🚨 Automated Budget Overspending Notifications
+- Automatically detects when users exceed their budget limits
+- Background monitoring using **Node Cron scheduled jobs**
+- Generates notifications when spending crosses defined limits
+- Helps users identify excessive spending early
+- Provides better control over financial habits
+
+---
+
+## 📈 Financial Analytics Dashboard
+- Interactive dashboard for tracking financial performance
+- Visualize:
+  - Total income
+  - Total expenses
+  - Monthly spending trends
+  - Category-wise expenses
+  - Budget utilization
+- Data-driven insights through charts and reports
+
+---
+
+## 🤖 AI Powered Financial Insights
+- AI-based analysis of user spending behaviour
+- Generates personalized financial recommendations
+- Identifies unnecessary spending patterns
+- Suggests ways to improve saving habits
+- Provides intelligent insights based on transaction history
+- Helps users make better financial decisions
 
 ---
 
